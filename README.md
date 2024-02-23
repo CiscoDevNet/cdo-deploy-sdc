@@ -1,8 +1,32 @@
 # Deploy CDO SDC/SEC Services on Your Own Ubuntu/Docker System
 ## Abstract
-This project contains a script to simply deploy the Cisco Defense Orchestrator (CDO) Secure Device Connector (SDC) and Secure Events Connector (SEC) on Linux Ubuntu systems. This script has been tested on Ubuntu 22.04 (jammy) and Ubuntu 20.04 (focal).   
+This project contains scripts to simply deploy the Cisco Defense Orchestrator (CDO) Secure Device Connector (SDC) and Secure Events Connector (SEC) on Linux Ubuntu systems. The scripts have been tested on Ubuntu 22.04 (jammy) and Ubuntu 20.04 (focal).   
 
 While Cisco Defense Orchestrator does supply a Linux VMWare image that has a configuration wizard, docker, and the needed packages already installed for the SDC and SEC services, many organizations may desire to run these services on their own Linux system rather than use the pre-packaged VMWare image. The reasons are many, but may include:  the organization may not have a VMWare implementation, the organization has a requirement to use a specific Linux distro, the organization has an existing docker eco-system, there are organizational boundaries and challenges that make it difficult to deploy new VMWare instances, simple lab usage, etc. 
+
+## System requirements
+These scripts were written using Ubuntu 20.04 (focal) and 22.04 (jammy) as the test system. Your milage may vary on older Ubuntu releases.  
+
+### Ubuntu package requirements
+- Docker Engine (Community Edition) See the README-DOCKER.md to use the docker install script provided.
+- The deployment script will install the needed apt packages and their dependencies for deploying the SDC and SEC
+
+### CPU/RAM Requirements
+The resource requirements are for both bare-metal Ubuntu installations as well as virtual installations like VMWare, Nutanix, Cisco Modeling Labs, qemu, AWS, Azure, etc.  
+- SDC Container Only  
+  - CPU Requirement: 2 CPU Cores/vCPUs  
+  - RAM Requirement: 2 Gig  
+- SDC and Secure Events Connector (SEC) Containers  
+  - CPU Requirement: 6 CPU Cores/vCPUs  
+  - RAM Requirement: 10 Gig  
+
+### Networking Requirements
+- A static IP address or DHCP reservation on the Ubuntu server to ensure the Ubuntu system's IP address does not change
+- An RFC-1918 ("Private") IP address on the Ubuntu server is fine
+- Outbound Internet access on ports 80 and 443 ***TODO: Fact Check this***
+- The Ubuntu server running the SDC container will need a network path to reach the management interfaces of the ASAs and IOS devices
+- Devices that wish to log to the cloud will need a network path to the Ubuntu server running the SEC container
+- See the `Tips and Tricks` section for iptables or firewalling considerations
 
 ## Quick Start TLDR;
 **Note: Do NOT sudo or run as root!**
@@ -23,32 +47,6 @@ Once the SDC is deployed an SEC container is an easy add-on. The SEC service rec
 <p align="center">
 <img src="./images/cdo-sdc-outbound-only.png" alt="architecture" width="80%" height="auto">
 </p>  
-
-## System requirements
-These scripts were written using Ubuntu 22.04 as the test system. Your milage may vary on older Ubuntu releases.  
-
-### Ubuntu package requirements
-The deployment script will install the needed packages and their dependencies for deploying the SDC and SEC using the Ubuntu apt package manager when the script runs, if the required packages and dependencies not already present.  
-
-### CPU/RAM Requirements
-The resource requirements are for both bare-metal Ubuntu installations as well as virtual installations like VMWare, Nutanix, Cisco Modeling Labs, qemu, AWS, Azure, etc.  
-- SDC Container Only  
-  - CPU Requirement: 2 CPU Cores/vCPUs  
-  - RAM Requirement: 2 Gig  
-- SDC and Secure Events Connector (SEC) Containers  
-  - CPU Requirement: 6 CPU Cores/vCPUs  
-  - RAM Requirement: 10 Gig  
-
-### Networking Requirements
-- A static IP address or DHCP reservation on the Ubuntu server to ensure the Ubuntu system's IP address does not change
-- An RFC-1918 ("Private") IP address on the Ubuntu server is fine
-- Outbound Internet access on ports 80 and 443 ***TODO: Fact Check this***
-- The Ubuntu server running the SDC container will need a network path to reach the management interfaces of the ASAs and IOS devices
-- Devices that wish to log to the cloud will need a network path to the Ubuntu server running the SEC container
-- See the `Tips and Tricks` section for iptables or firewalling considerations
-
-### Docker Requirements
-It is recommended to use Docker Community Edition (docker-ce) rather than the docker version that is packaged with Ubuntu. See the README-DOCKER.md file for more information about installing Docker and using the included docker-ce installation script.
 
 ## What does the deploy_sdc.sh script do?
 While it's not necessary to know all of the detailed steps that the script executes to use the deploy script, we are providing the following details for the inquisitive or those that may want to adapt the script for some other Linux distro.  
