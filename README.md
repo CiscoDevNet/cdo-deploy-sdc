@@ -20,8 +20,9 @@ The SDC is a docker containerized service that facilitates communication between
 
 ### Secure Event Connector (SEC)
 Once the SDC is deployed an SEC container is an easy add-on. The SEC service receives syslog messages from ASA, IOS, and FTD platforms and securely sends them to the Cisco cloud where eventing services like CDO Analytics and Cisco XDR can store, augment, and analyze these log messages. ***(Fact Check XDR)***
-
+<p align="center">
 <img src="./images/cdo-sdc-outbound-only.png" alt="architecture" width="80%" height="auto">
+</p>  
 
 ## System requirements
 These scripts were written using Ubuntu 22.04 as the test system. Your milage may vary on older Ubuntu releases.  
