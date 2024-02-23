@@ -1,6 +1,6 @@
 # Deploy CDO SDC/SEC Services on Your Own Ubuntu/Docker System
 ## Abstract
-This project contains a script to simply deploy the Cisco Defense Orchestrator (CDO) Secure Device Connector (SDC) and Secure Events Connector (SEC) on Linux Ubuntu systems (Tested on Ubuntu 22.04 - Jammy).   
+This project contains a script to simply deploy the Cisco Defense Orchestrator (CDO) Secure Device Connector (SDC) and Secure Events Connector (SEC) on Linux Ubuntu systems. This script has been tested on Ubuntu 22.04 (jammy) and Ubuntu 20.04 (focal).   
 
 While Cisco Defense Orchestrator does supply a Linux VMWare image that has a configuration wizard, docker, and the needed packages already installed for the SDC and SEC services, many organizations may desire to run these services on their own Linux system rather than use the pre-packaged VMWare image. The reasons are many, but may include:  the organization may not have a VMWare implementation, the organization has a requirement to use a specific Linux distro, the organization has an existing docker eco-system, there are organizational boundaries and challenges that make it difficult to deploy new VMWare instances, simple lab usage, etc. 
 
@@ -16,10 +16,10 @@ Where `Q0RPX1RPS0VOPSJleU...Y29fYWFoYWNrbmUtU0RDLTQiCg==` is your SDC bootstrap 
 # Detailed Information
 ## What are the SDC and SEC containers?
 ### Secure Device Connector (SDC)
-The SDC is a docker containerized service that facilitates communication between Cisco Defense Orchestrator and Cisco Adaptive Security Appliance (ASA/ASAv) firewalls (HTTPS) and Cisco IOS Routers/Switches (SSH) that are not cloud-native (Note that the Firewall Threat Defense platform (FTD) is CDO cloud native and does not require the use of an SDC to be managed by CDO and a cloud-delivered Firewall Management Center (cdFMC)).  
+The SDC is a docker containerized service that facilitates communication between Cisco Defense Orchestrator and Cisco Adaptive Security Appliance (ASA/ASAv) firewalls (HTTPS) and Cisco IOS Routers/Switches (SSH) that are not cloud-native. Note that the Firewall Threat Defense platform (FTD) is CDO cloud native and does not require the use of an SDC to be managed by CDO and a cloud-delivered Firewall Management Center (cdFMC).  
 
 ### Secure Event Connector (SEC)
-Once the SDC is deployed an SEC container is an easy add-on. The SEC service receives syslog messages from ASA, IOS, and FTD platforms and securely sends them to the Cisco cloud where eventing services like CDO Analytics and Cisco XDR can store, augment, and analyze these log messages. ***(Fact Check XDR)***
+Once the SDC is deployed an SEC container is an easy add-on. The SEC service receives syslog messages from ASA, IOS, and FTD platforms and securely sends them to the Cisco cloud where eventing services like CDO Analytics and Cisco XDR can store, augment, and analyze these log messages.
 <p align="center">
 <img src="./images/cdo-sdc-outbound-only.png" alt="architecture" width="80%" height="auto">
 </p>  

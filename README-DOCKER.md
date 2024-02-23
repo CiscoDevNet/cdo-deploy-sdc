@@ -1,14 +1,12 @@
 # Docker Notes
 
 ## Best Results
-For best results, do not use the docker package supplied by Ubuntu. Instead one can use the
-docker community edition (docker-ce). We will add the official docker apt package repository
-and install docker-ce before running the deploy_sdc.sh script.  
+For best results, do not use the docker package supplied by Ubuntu. Instead it is desirable to use the
+docker community edition (docker-ce). The install script will provide an opportunity to remove the legacy distro provided docker packages before installing the preferred docker community edition. We will add the official docker apt package repository
+and install docker-ce before running the deploy_sdc.sh script. More information on these recommendations and requirements can be found in the official docker documentation [here](https://docs.docker.com/engine/install/ubuntu/#prerequisites).
 
-## Scripted install of docker-ce
-All of the below steps are captured in the script `install_docker.sh` and presumes the user is running Ubuntu 22.04 (Jammy)  
-Usage:  
-DO NOT RUN AS ROOT!  
+## Quick Start TLDR;
+**Note: Do NOT sudo or run as root!**
 ```
 ./install_docker.sh
 ```
@@ -53,7 +51,7 @@ sudo usermod -aG docker ${USER}
 newgrp docker
 ```
 
-## Simplified Example of docker-ce install on Ubuntu 24.02 (jammy):
+## Simplified Example of docker-ce manual installation steps on Ubuntu 24.02 (jammy):
 ```
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common awscli -y
