@@ -5,7 +5,7 @@ This project contains scripts to simply deploy the Cisco Defense Orchestrator (C
 While Cisco Defense Orchestrator does supply a Linux VMWare image that has a configuration wizard, docker, and the needed packages already installed for the SDC and SEC services, many organizations may desire to run these services on their own Linux system rather than use the pre-packaged VMWare image. The reasons are many, but may include:  the organization may not have a VMWare implementation, the organization has a requirement to use a specific Linux distro, the organization has an existing docker eco-system, there are organizational boundaries and challenges that make it difficult to deploy new VMWare instances, simple lab usage, etc. 
 
 ## System requirements
-These scripts were written using Ubuntu 20.04 (focal) and 22.04 (jammy) as the test system. Your milage may vary on older Ubuntu releases.  
+These scripts were written using Ubuntu 20.04 (focal) and 22.04 (jammy) as the test systems. Your milage may vary on older Ubuntu releases.  
 
 ### Ubuntu package requirements
 - Docker Engine (Community Edition) See the README-DOCKER.md to use the docker install script provided.
@@ -51,7 +51,7 @@ Once the SDC is deployed an SEC container is an easy add-on. The SEC service rec
 ## What does the deploy_sdc.sh script do?
 While it's not necessary to know all of the detailed steps that the script executes to use the deploy script, we are providing the following details for the inquisitive or those that may want to adapt the script for some other Linux distro.  
   
-Note that when running the script, the current user must be able to run `sudo` commands and will be prompted for their password when running the script, as there are `sudo` commands as needed as part of the deploy script. As always, check the script's code in `deploy.sh` if there are concerns over the use of the sudo commands.  
+Note that when running the script, the current user must be able to run `sudo` commands and will be prompted for their password when running the script, as there are `sudo` commands embedded as needed as part of the deploy script. As always, check the script's code in `deploy.sh` if there are concerns over the use of the sudo commands contained within.  
   
 **Note: Do NOT sudo or run as root!**  
   
@@ -94,7 +94,7 @@ Once the SDC is deployed, the bootstrap scripts needed to deploy an SEC are alre
 ### Create an SEC in your CDO tenant
 1. Log into your CDO Tenant and navigate to Tools & Services --> Secure Connectors
 2. Click the blue (+) button and add a Secure Events Connector (SEC)
-3. Copy the `SEC Bootstrap Data` to use in the bootstrap script (Not the SDC Bootstrap Data!)
+3. Copy the `SEC Bootstrap Data` to use in the bootstrap script (**Not the SDC Bootstrap Data!**)
 
 ### Run the SEC bootstrap script
 1. "su" to the sdc user: `sudo su sdc`
@@ -115,7 +115,7 @@ We have included a simple script to delete the SDC and SEC from the Linux system
 If you are filtering connections to and from your Ubuntu server, there are a few considerations to address for the SDC and SEC:
 1. The SDC host linux system will need outbound `https` access to your ASA devices on whatever IP and port your ASAs have been configured to listen on. Typically, this is the ASA's management interface IP address on `TCP port 443`.
 2. The SDC host linux system will need outbound `SSH` access to your IOS or other SSH integrations that you wish to manage from CDO. Typically, this will be some management IP on `TCP port 22`.
-3. The SDC host linux system will need outbound access to the public Internet on 80/443 and the linux system would need some kind of dns name resolution as well as ntp services to keep the system clock in sync.
+3. The SDC host linux system will need outbound access to the public Internet on 80/443 and the linux system would need some kind of `dns` name resolution as well as `ntp` services to keep the system clock in sync.
 4. The SEC receives syslog and netflow data from ASA, IOS, and FTD devices. As such, there will need to be inbound access rules for the host linux system to receive these packets. By default, the SEC will listen on the following ports and protocols:
    -  Syslog UDP/10025
    -  Syslog TCP/10125
