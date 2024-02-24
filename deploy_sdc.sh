@@ -5,8 +5,8 @@ sdc_home=/usr/local/cdo
 
 # We need the b64 bootstrap payload from CDO as a parameter for the script
 if [ "$#" -ne 1 ]; then
-    echo "usage: source sdc_prep.sh [bootstrap data]" >&2
-    echo "example: source sdc_prep.sh Q0RPX1RPS0VOPSJleU...Y29fYWFoYWNrbmUtU0RDLTQiCg==" >&2
+    echo "usage: source deploy_sdc.sh [bootstrap data]" >&2
+    echo "example: source deploy_sdc.sh Q0RPX1RPS0VOPSJleU...Y29fYWFoYWNrbmUtU0RDLTQiCg==" >&2
     exit
 fi
 
@@ -112,7 +112,7 @@ if sudo test -f "${sdc_home}/bootstrap/bootstrap.sh"; then
 else
   echo "***********************************************************************************************" >&2
   echo "Something went wrong with the pre-configuration script." >&2
-  echo "Post your issue in github and include the output from this script with the debug option enabled" >&2
+  echo "Post your issue in [github](https://github.com/CiscoDevNet/cdo-deploy-sdc/issues) and include the output from this script with the debug option enabled being sure ** NOT to post any passwords or API keys**!" >&2
   echo "bash -x sdc-pre-config.sh" >&2
   echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" >&2
 fi
