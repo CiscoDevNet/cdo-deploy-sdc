@@ -11,7 +11,7 @@ and install docker-ce before running the deploy_sdc.sh script. More information 
 ./install_docker.sh
 ```
 
-## Manual Steps Docker install (Alternative to using the `install_docker.sh` script)
+## Manual Steps for Docker Install (Alternative to using the `install_docker.sh` script)
 1. Make sure apt package cache is up to date and install some docker pre-requisites
 ```
 sudo apt update
