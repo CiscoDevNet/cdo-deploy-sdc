@@ -14,11 +14,11 @@ These scripts were written using Ubuntu 20.04 (focal) and 22.04 (jammy) as the t
 ### CPU/RAM Requirements
 The resource requirements are for both bare-metal Ubuntu installations as well as virtual installations like VMWare, Nutanix, Cisco Modeling Labs, qemu, AWS, Azure, etc.  
 - SDC Container Only  
-  - CPU Requirement: 2 CPU Cores/vCPUs  
-  - RAM Requirement: 2 Gig  
+  - CPU Requirement: 2 CPU Cores/vCPUs Minimum
+  - RAM Requirement: 2 Gig Minimum
 - SDC and Secure Events Connector (SEC) Containers  
-  - CPU Requirement: 6 CPU Cores/vCPUs  
-  - RAM Requirement: 10 Gig  
+  - CPU Requirement: 4 CPU Cores/vCPUs Minimum  
+  - RAM Requirement: 8 Gig Minimum 
 
 ### Networking Requirements
 - A static IP address or DHCP reservation on the Ubuntu server to ensure the Ubuntu system's IP address does not change
