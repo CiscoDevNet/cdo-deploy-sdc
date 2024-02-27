@@ -66,7 +66,5 @@ echo ""
 # Add the current user to the docker permissions group
 echo "Adding the current user ${USER} to the docker permmissions group"
 sudo usermod -aG docker ${USER}
+echo "Done!"
 newgrp docker
-echo ""
-echo "DONE!"
-exit 0

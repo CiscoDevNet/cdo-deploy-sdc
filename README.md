@@ -1,4 +1,7 @@
-# Deploy CDO SDC/SEC Services on Your Own Ubuntu/Docker System
+# Deploy CDO SDC/SEC Services
+![version](https://img.shields.io/badge/version-1.0.1-blue)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)  
+
 ## Abstract
 This project contains scripts to simply deploy the Cisco Defense Orchestrator (CDO) Secure Device Connector (SDC) and Secure Events Connector (SEC) on Linux Ubuntu systems. The scripts have been tested on Ubuntu 22.04 (jammy) and Ubuntu 20.04 (focal).   
 
