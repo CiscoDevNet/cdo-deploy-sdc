@@ -64,7 +64,7 @@ echo $(sudo systemctl status docker | grep 'Active')
 echo ""
 
 # Add the current user to the docker permissions group
-echo "Adding the current user ${USER} to the docker permmissions group"
+echo "Adding the current user ${USER} to the docker permissions group"
 sudo usermod -aG docker ${USER}
 echo "Done!"
 newgrp docker
