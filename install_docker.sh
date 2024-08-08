@@ -41,7 +41,7 @@ sudo apt install apt-transport-https ca-certificates curl software-properties-co
 
 # Add and trust the official docker-ce apt repository
 echo "${DISTRIB_CODENAME}: Installing the gpg key for the docker-ce apt repository"
-if [ ${DISTRIB_CODENAME} == "jammy" ]; then
+if [ ${DISTRIB_CODENAME} == "jammy" || ${DISTRIB_CODENAME} == "noble" ]; then
     curl -s ${DOCKER_GPG} | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/docker.gpg --import
     sudo chmod 644 /etc/apt/trusted.gpg.d/docker*
 elif [ ${DISTRIB_CODENAME} == "focal" ]; then
