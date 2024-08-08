@@ -4,7 +4,7 @@ DOCKER_APT="https://download.docker.com/linux/ubuntu"
 
 source /etc/lsb-release
 # Detect Ubuntu release - We only support the latest LTS releases
-if [[ ${DISTRIB_CODENAME} == "jammy" || ${DISTRIB_CODENAME} == "focal" ]]; then
+if [[ ${DISTRIB_CODENAME} == "jammy" || ${DISTRIB_CODENAME} == "focal" || ${DISTRIB_CODENAME} == "noble"]]; then
     echo ${DISTRIB_CODENAME}
 else
     echo "${DISTRIB_CODENAME} is not supported by this installation script."
